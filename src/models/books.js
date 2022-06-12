@@ -6,8 +6,8 @@ const BookSchema = new Schema(
     title: {
       type: String,
       required: true,
-      minlength: 5,
-      maxlength: 32,
+      // minlength: 5,
+      // maxlength: 32,
     },
     price: {
       type: Number,
