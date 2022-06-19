@@ -1,4 +1,5 @@
 import Category from "../models/category";
+import Book from "../models/books";
 
 export const getCategories = async (req, res) => {
   try {
@@ -11,8 +12,9 @@ export const getCategories = async (req, res) => {
 
 export const getCategory = async (req, res) => {
   try {
-    const category = await Category.findById({ _id: req.params.id }).exec();
-    res.json(category);
+    const category = await Category.findOne({ _id: req.params.id }).exec();
+    const books = await Book.find({ category }).select("-category").exec();
+    res.json({ category, books });
   } catch (error) {
     res.json({ message: "Can not find any category" });
   }

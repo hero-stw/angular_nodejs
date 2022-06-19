@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import BookRoute from "./routes/books";
 import UserRoute from "./routes/users";
 import CategoryRoute from "./routes/category";
+import OrderRoute from "./routes/orders";
 
 const app = express();
 app.use(cors());
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use("/api", BookRoute);
 app.use("/api", UserRoute);
 app.use("/api", CategoryRoute);
+app.use("/api", OrderRoute);
 
 mongoose
   .connect("mongodb://localhost:27017/bookstore")

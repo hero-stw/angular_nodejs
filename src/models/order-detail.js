@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose";
+import BookSchema from "./book";
 
 const { ObjectId } = mongoose.Types;
 const OrderDetailSchema = new Schema(
@@ -6,8 +7,8 @@ const OrderDetailSchema = new Schema(
     orderId: {
       type: ObjectId,
       ref: "Order",
-      required: true,
     },
+    products: [BookSchema],
   },
   { timestamps: true }
 );

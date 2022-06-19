@@ -1,19 +1,43 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 
-const { ObjectId } = mongoose.Types;
-const OrderSchema = new Schema(
+const ObjectId = mongoose.Types.ObjectId;
+const OrderSchema = new mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: true,
+    products: [
+      {
+        _id: {
+          type: ObjectId,
+          ref: "Book",
+        },
+        quantity: {
+          type: Number,
+        },
+      },
+    ],
+    price: {
+      type: Number,
     },
-    phone: {
+    status: {
       type: String,
-      required: true,
+      enum: ["pending", "confirm", "shipping", "done", "close"],
+      default: "pending",
     },
-    address: {
-      type: String,
-      required: true,
+    shippingInfo: {
+      fullname: {
+        type: String,
+      },
+      phoneNumber: {
+        type: String,
+      },
+      email: {
+        type: String,
+      },
+      address: {
+        type: String,
+      },
+      note: {
+        type: String,
+      },
     },
   },
   { timestamps: true }
