@@ -11,7 +11,7 @@ export const getBooks = async (req, res) => {
 
 export const getBook = async (req, res) => {
   try {
-    const book = await Books.findById({ _id: req.params.id }).exec();
+    const book = await Books.findOne({ _id: req.params.id }).exec();
     res.json(book);
   } catch (error) {
     res.json({ message: "Can not find any book" });
